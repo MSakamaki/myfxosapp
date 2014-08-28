@@ -1,7 +1,7 @@
 {
     "version": "1",
     "name": "myfxosapp",
-    "launch_path": "./index.html",
+    "launch_path": "/myfxosapp/index.html",
     "description": "Not today",
     "icons": {
         "16": "images/logo16.png",
