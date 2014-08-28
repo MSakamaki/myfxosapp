@@ -68,6 +68,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-gh-pages');
 
     /**
     * Tasks
@@ -77,5 +78,5 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['jshint']);
 
     grunt.registerTask('server', ['connect']);
-    grunt.registerTask('ghp', ['gh-pages']);
+    grunt.registerTask('ghp', ['jshint', 'clean', 'copy', 'uglify','gh-pages']);
 };
