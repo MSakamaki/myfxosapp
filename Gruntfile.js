@@ -76,5 +76,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', ['jshint']);
 
-	grunt.registerTask('server', ['connect']);
+    grunt.registerTask('server', ['connect']);
+    grunt.registerTask('ghp', ['gh-pages']);
 };
