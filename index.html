@@ -24,11 +24,12 @@
           <a href="#" id="about">About</a>
           <my-element></my-element>
         </ul>
-        <ul><input type="text" ng-model="pokename">pikachu</ul>>
+        <ul><input type="text" ng-model="pokename" value="pikachu"></ul>
         <ul><x-pokemon name={{pokename}}></x-pokemon></ul>
         <ul><x-pokemon name=raichu></x-pokemon></ul>
+        <ul><input type="text" ng-model="ghname" value="FxOS-Code-Reading-Grou"></ul>
         <ul><x-business-card animation="hinge" thema="enpura"></x-business-card></ul>
-        <ul><github-card user="FxOS-Code-Reading-Group"></github-card></ul>
+        <ul><github-card user={{ghname}}></github-card></ul>
     </div>
 
     
