@@ -1,2 +1,4 @@
 node_modules
 dist
+app/bower_components
+app/js/vendor
