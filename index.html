@@ -11,6 +11,7 @@
     <link rel="import" href="http://reading.fxos.org:8088/bower_components/x-pokemon/x-pokemon.html">
     <link rel="import" href="http://reading.fxos.org:8088/ghc/bower_components/github-card/webcomponent/github-card.html">
     <title>myfxosapp</title>
+    <script src="./js/vendor/angular/angular.js"></script>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
         <div>myfxosapp</div>
     </header>
 
-    <div id="main">
+    <div id="main" ng-app>
         <ul>
           <a href="#" id="about">About</a>
           <my-element></my-element>
