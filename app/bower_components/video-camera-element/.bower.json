@@ -1,0 +1,30 @@
+{
+  "name": "video-camera-element",
+  "version": "0.1.3",
+  "description": "Web Component wrapper for getUserMedia API using Polymer",
+  "license": "MIT",
+  "main": "dist/video-camera.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.3"
+  },
+  "homepage": "https://github.com/eduardolundgren/video-camera-element",
+  "_release": "0.1.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.3",
+    "commit": "39a1638dc883d5352768bfa4dcf8aebfe77f1e68"
+  },
+  "_source": "git://github.com/eduardolundgren/video-camera-element.git",
+  "_target": "~0.1.3",
+  "_originalSource": "video-camera-element",
+  "_direct": true
+}
