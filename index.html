@@ -11,10 +11,26 @@
     <link rel="import" href="http://reading.fxos.org:8088/bower_components/x-pokemon/x-pokemon.html">
     <link rel="import" href="http://reading.fxos.org:8088/ghc/bower_components/github-card/webcomponent/github-card.html">
     <!--script src="http://reading.fxos.org:8088/brick/bower_components/brick/dist/platform/platform.js"></script-->
+
+
+    <link rel="stylesheet" type="text/css" href="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/src/slidebox.css"/>
+    <script type="text/javascript" src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/x-tag-components.js"></script>
+    <script type="text/javascript" src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/src/slidebox.js"></script>
+
     <link rel="import" href="./js/vendor/brick/dist/brick.html">
     <link rel="import" href="./js/vendor/brick-flipbox/src/brick-flipbox.html">
     <title>myfxosapp</title>
     <script src="./js/vendor/angular/angular.js"></script>
+    <style type="text/css">
+      #slidebox_demo {
+        height: 300px;
+        width: 220px;
+      }
+      #slidebox_demo img{
+        height: 100%;
+        width: 100%;
+      }
+    </style>
 </head>
 
 <body>
@@ -37,44 +53,26 @@
         </ul>
     </div>
 
-            <style>
-              .demo {
-                border: 1px solid black;
-                width: 320px;
-                height: 480px;
-              }
-              .demo > div:first-child {
-                background: red;
-              }
-              .demo > div:last-child {
-                background: blue;
-              }
-            </style>
-            <brick-flipbox class="demo">
-              <div>front</div>
-              <div>back</div>
-                </brick-flipbox>
-                <select name="direction" id="direction">
-                  <option value="right" selected="selected">Right</option>
-                  <option value="left">Left</option>
-                  <option value="up">Up</option>
-                  <option value="down">Down</option>
-                </select>
-                <button id="toggleButton">Toggle</button>
+  <dl>
+    <dd id="slidebox">
+      <nav class="actions">
+        <button data-action-type="slidePrevious"><- Previous Slide</button>
+        <button data-action-type="slideNext">Next Slide -></button>
+        <button data-action-type="slideTo">Slide To 3</button>
+        <button data-action-type="slideOrientation">Toggle orientation</button>
+      </nav>
 
-                <script>
-                window.addEventListener('WebComponentsReady',function(){
-                  var toggleButton = document.getElementById('toggleButton');
-                  var direction = document.getElementById('direction');
-                  var flipbox = document.querySelector('brick-flipbox');
-                  toggleButton.addEventListener('click', function() {
-                    flipbox.toggle();
-                  });
-                  direction.addEventListener('change', function(e) {
-                    flipbox.direction = e.currentTarget.value;
-                  });
-                });
-                </script>
+      <x-slidebox id="slidebox_demo" orientation="x">
+        <x-slides>
+          <x-slide><img src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/birnimal-calendar.png" /></x-slide>
+          <x-slide><img src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/birnimal-graph.png" /></x-slide>
+          <x-slide><img src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/birnimal-detail.png" /></x-slide>
+          <x-slide><img src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/birnimal-settings.png" /></x-slide>
+        </x-slides>
+      </x-slidebox>
+
+    </dd>
+  </dl>
 
     
     <footer></footer>
