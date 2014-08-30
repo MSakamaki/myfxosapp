@@ -17,8 +17,6 @@
     <script type="text/javascript" src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/x-tag-components.js"></script>
     <script type="text/javascript" src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/src/slidebox.js"></script>
 
-    <link rel="import" href="./js/vendor/brick/dist/brick.html">
-    <link rel="import" href="./js/vendor/brick-flipbox/src/brick-flipbox.html">
     <title>myfxosapp</title>
     <script src="./js/vendor/angular/angular.js"></script>
     <style type="text/css">
@@ -74,7 +72,50 @@
     </dd>
   </dl>
 
-    
+<script type="text/javascript">
+  document.getElementById('slidebox_demo').addEventListener('slideend', function(e){
+    console.log("slideend event fired", e.target, this);
+  });
+
+  document.getElementById('slidebox_demo').addEventListener('fooo', function(e){
+    console.log("foo");
+  });
+
+  xtag.fireEvent(document.getElementById('slidebox_demo'), 'fooo');
+
+  document.addEventListener('click', function(e){
+
+    var action = e.target,
+      parent = action.parentNode,
+      actionType = action.getAttribute('data-action-type');
+
+    if (actionType) {
+
+      var tag = action.parentElement.parentElement.id,
+        demo = document.getElementById(tag + '_demo');
+
+      switch(actionType) {
+
+        case 'slideNext':
+          demo.slideNext();
+          break;
+
+        case 'slidePrevious':
+          demo.slidePrevious();
+          break;
+
+        case 'slideTo':
+          demo.slideTo(2);
+          break;
+        case 'slideOrientation':
+          demo.orientation = demo.orientation == 'x' ? 'y' : 'x';
+          break;
+
+      }
+
+    }
+  });
+</script>    
     <footer></footer>
 
     <!--script type="text/javascript" src="./js/FirefoxOSAppGenerator.min.js"></script-->
