@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
+    <!-- polymer sample -->
     <!--script src="http://msakamaki.github.io/polymer-sample/bower_components/platform/platform.js"></script>
     <link rel="import" href="http://msakamaki.github.io/polymer-sample/src/my-element.html">
     <link rel="import" href="http://reading.fxos.org:8088/xcd/src/x-business-card.html">
@@ -12,7 +13,7 @@
     <link rel="import" href="http://reading.fxos.org:8088/ghc/bower_components/github-card/webcomponent/github-card.html">
     <script src="http://reading.fxos.org:8088/brick/bower_components/brick/dist/platform/platform.js"></script-->
 
-
+    <!-- x-tag sample -->
     <link rel="stylesheet" type="text/css" href="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/src/slidebox.css"/>
     <script type="text/javascript" src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/x-tag-components.js"></script>
     <script type="text/javascript" src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/src/slidebox.js"></script>
@@ -36,7 +37,8 @@
         <div>myfxosapp</div>
     </header>
 
-    <div id="main" ng-app>
+    <!-- polymer sample -->
+    <!-- div id="main">
         <ul>
           <a href="#" id="about">About</a>
           <my-element></my-element>
@@ -49,18 +51,20 @@
         <ul>
 
         </ul>
-    </div>
+    </div-->
 
-  <dl>
+<!-- x-tag sample -->
+<div ng-app="fxosApp">
+  <dl ng-controller="fxosctrl">
     <dd id="slidebox">
       <nav class="actions">
-        <button data-action-type="slidePrevious"><- Previous Slide</button>
-        <button data-action-type="slideNext">Next Slide -></button>
-        <button data-action-type="slideTo">Slide To 3</button>
-        <button data-action-type="slideOrientation">Toggle orientation</button>
+        <button ng-click="next()"><- Previous Slide</button>
+        <button ng-click="prev()">Next Slide -></button>
+        <button ng-click="slideTo(2)">Slide To 3</button>
+        <button ng-click="slideOrientation()">Toggle orientation</button>
       </nav>
 
-      <x-slidebox id="slidebox_demo" orientation="x">
+      <x-slidebox ng-click="next()" id="slidebox_demo" orientation="{{origin}}" ng-init="origin='x'">
         <x-slides>
           <x-slide><img src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/birnimal-calendar.png" /></x-slide>
           <x-slide><img src="http://reading.fxos.org:8088/xtag/bower_components/x-tag-slidebox/demo/birnimal-graph.png" /></x-slide>
@@ -71,53 +75,18 @@
 
     </dd>
   </dl>
-
+</div>
 <script type="text/javascript">
-  document.getElementById('slidebox_demo').addEventListener('slideend', function(e){
-    console.log("slideend event fired", e.target, this);
-  });
-
-  document.getElementById('slidebox_demo').addEventListener('fooo', function(e){
-    console.log("foo");
-  });
-
-  xtag.fireEvent(document.getElementById('slidebox_demo'), 'fooo');
-
-  document.addEventListener('click', function(e){
-
-    var action = e.target,
-      parent = action.parentNode,
-      actionType = action.getAttribute('data-action-type');
-
-    if (actionType) {
-
-      var tag = action.parentElement.parentElement.id,
-        demo = document.getElementById(tag + '_demo');
-
-      switch(actionType) {
-
-        case 'slideNext':
-          demo.slideNext();
-          break;
-
-        case 'slidePrevious':
-          demo.slidePrevious();
-          break;
-
-        case 'slideTo':
-          demo.slideTo(2);
-          break;
-        case 'slideOrientation':
-          demo.orientation = demo.orientation == 'x' ? 'y' : 'x';
-          break;
-
-      }
-
-    }
-  });
+angular.module('fxosApp',[])
+    .controller('fxosctrl', ['$scope', function($scope) {
+        $scope.demo = document.getElementById('slidebox_demo');
+        $scope.next = function(){ $scope.demo.slideNext(); }
+        $scope.prev = function(){ $scope.demo.slidePrevious(); }
+        $scope.slideTo = function(sendnum){ $scope.demo.slideTo(sendnum); }
+        $scope.slideOrientation = function(){ $scope.origin = ($scope.origin == 'x') ? 'y' : 'x'; }
+    }]);
 </script>    
     <footer></footer>
-
     <!--script type="text/javascript" src="./js/FirefoxOSAppGenerator.min.js"></script-->
 </body>
 </html>
